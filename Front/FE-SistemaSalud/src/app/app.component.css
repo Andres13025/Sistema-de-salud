@@ -1,0 +1,59 @@
+.login{
+    background-color: white;
+}
+
+.logo{
+    background-color: rgba(70, 128, 227, 1)
+}
+
+.form{
+    text-align: center;
+    margin: 0 auto;
+    width: 60%;
+    margin-top: 20vh;
+}
+
+.section{
+    text-align: -webkit-center;
+}
+
+h2{
+    font-size: 5vh;
+}
+
+.send{
+    width: 50%;
+}
+
+/* cruz */
+
+#cross {
+    width: 270px;
+    height: 270px;
+    position: relative;
+ }
+ 
+ #cross:before, #cross:after {
+   content: "";
+   position: absolute;
+   z-index: -1;
+   background: rgb(255, 255, 255);
+ }
+ 
+ #cross:before {
+   left: 45%;
+   width: 40%;
+   margin-left: -15%;
+   height: 100%;
+   border-radius: 5px;
+ }
+ 
+ #cross:after {
+   top: 45%;
+   height: 40%;
+   margin-top: -15%;
+   width: 100%;
+   border-radius: 5px;
+ }
+
+ /* inputs */
