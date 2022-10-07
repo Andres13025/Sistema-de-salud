@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, tap } from 'rxjs';
+import { IResponse } from '../components/login/models/response';
+import { UserLogin } from '../components/login/models/user';
 import { ApiService } from '../components/login/services/api.service';
 
 @Injectable({
@@ -14,11 +16,11 @@ export class AuthService {
     this._isLoggedIn$.next(!!token);
   }
 
-  login(username: string, password: string) {
-    return this.apiService.login(username, password).pipe(
+  login(request: UserLogin) {
+    return this.apiService.login(request).pipe(
       tap((response: any) => {
         this._isLoggedIn$.next(true);
-        localStorage.setItem('profanis_auth', response.token);
+        localStorage.setItem('profanis_auth', response.jWtoken);
       })
     );
   }

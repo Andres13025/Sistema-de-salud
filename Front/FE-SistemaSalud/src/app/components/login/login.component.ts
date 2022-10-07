@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserLogin } from './models/user';
 
 @Component({
   selector: 'app-login',
@@ -27,14 +28,19 @@ export class LoginComponent implements OnInit {
 
     let username = this.form.get('username')?.value;
     let pass = this.form.get('password')?.value;
+    let request: UserLogin = {
+      username: username,
+      password: pass
+    }
     if(username == null || pass == null){
       username = '';
       pass = '';
     }
 
     this.authService
-      .login(username, pass)
+      .login(request)
       .subscribe((response) => {
+        var x = response;
         console.log("logged");
         //this.router.navigate(['/dashboard']);
       });

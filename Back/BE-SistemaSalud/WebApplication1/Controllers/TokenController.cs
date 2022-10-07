@@ -4,6 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using WebApplication1.DTO;
 using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
@@ -21,11 +22,11 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post(Usuario _userData)
+        public async Task<IActionResult> Post(UserLogin _userData)
         {
-            if (_userData != null && _userData.Correo != null && _userData.Contraseña != null)
+            if (_userData != null && _userData.Username != null && _userData.Password != null)
             {
-                var user = await GetUser(_userData.Correo, _userData.Contraseña);
+                var user = await GetUser(_userData.Username, _userData.Password);
 
                 if (user != null)
                 {
@@ -48,8 +49,9 @@ namespace WebApplication1.Controllers
                         claims,
                         expires: DateTime.UtcNow.AddMinutes(10),
                         signingCredentials: signIn);
+                    string response = new JwtSecurityTokenHandler().WriteToken(token);
 
-                    return Ok(new JwtSecurityTokenHandler().WriteToken(token));
+                    return Ok(new AuthenticationResponse { JWtoken = response});
                 }
                 else
                 {
