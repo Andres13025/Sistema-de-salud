@@ -2,3 +2,55 @@ node_modules
 /.vs
 .vs
 .vs/
+Back/BE-SistemaSalud/.vs/BE-SistemaSalud/v17/.suo
+Back/BE-SistemaSalud/.vs/BE-SistemaSalud/v17/.suo
+Back/BE-SistemaSalud/.vs/BE-SistemaSalud/DesignTimeBuild/.dtbcache.v2
+Back/BE-SistemaSalud/.vs/BE-SistemaSalud/DesignTimeBuild/.dtbcache.v2
+Back/BE-SistemaSalud/.vs/ProjectEvaluation/be-sistemasalud.projects.v5.1
+Back/BE-SistemaSalud/.vs/ProjectEvaluation/be-sistemasalud.metadata.v5.1
+Back/BE-SistemaSalud/.vs/BE-SistemaSalud/v17/.suo
+Back/BE-SistemaSalud/.vs/BE-SistemaSalud/v17/.futdcache.v2
+Back/BE-SistemaSalud/.vs/BE-SistemaSalud/DesignTimeBuild/.dtbcache.v2
+Back/BE-SistemaSalud/.vs/BE-SistemaSalud/DesignTimeBuild/.dtbcache.v2
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Miscellaneous
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+
+# System files
+.DS_Store
+Thumbs.db

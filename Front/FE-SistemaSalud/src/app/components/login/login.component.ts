@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
       .subscribe((response) => {
         var x = response;
         console.log("logged");
-        //this.router.navigate(['/dashboard']);
+        this.router.navigate(['/menu']);
       });
 
   }
