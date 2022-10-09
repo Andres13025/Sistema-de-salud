@@ -23,7 +23,7 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddDbContext<DatabaseContext>
     (options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConn"), sqlServerOptionsAction => sqlServerOptionsAction.EnableRetryOnFailure()));
-builder.Services.AddTransient<ITiposCondiciones, TipoCondicionesRepository>();
+builder.Services.AddTransient<IUsuario, UserRepository>();
 builder.Services.AddControllers();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {

@@ -1,1 +1,152 @@
-<p>registro works!</p>
+<button mat-raised-button (click)="isEditable = !isEditable">
+    {{!isEditable ? 'Enable edit mode' : 'Disable edit mode'}}
+  </button>
+  <div>
+    <mat-stepper linear #stepper>
+        <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+          <form [formGroup]="firstFormGroup" (ngSubmit)="form1()" #formone="ngForm">
+            <ng-template matStepLabel>Crear Cuenta</ng-template>
+            <mat-form-field appearance="fill">
+              <mat-label>Usuario</mat-label>
+              <input matInput formControlName="usuario" placeholder="Nombre" required>
+            </mat-form-field><br>
+            <mat-form-field appearance="fill">
+                <mat-label>Contraseña</mat-label>
+                <input type="password" matInput formControlName="pass" placeholder="Contraseña" required>
+              </mat-form-field><br>
+              <mat-form-field appearance="fill">
+                <mat-label>Confirmar Contraseña</mat-label>
+                <input type="password" matInput formControlName="confirm_pass" placeholder="Contraseña" required>
+              </mat-form-field><br>
+          </form>
+          <div>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+          <form [formGroup]="secondFormGroup" (ngSubmit)="form2()" #formtwo="ngForm">
+            <ng-template matStepLabel>Datos Basicos</ng-template>
+            <mat-form-field appearance="fill">
+              <mat-label>Primer Nombre</mat-label>
+              <input matInput formControlName="firstname" placeholder=""
+                     required>
+            </mat-form-field><br>
+            <mat-form-field appearance="fill">
+                <mat-label>Sengundo Nombre</mat-label>
+                <input matInput formControlName="secondname" placeholder=""
+                       required>
+              </mat-form-field><br>
+            <mat-form-field appearance="fill">
+                <mat-label>Primer Apellido</mat-label>
+                <input matInput formControlName="firstlastname" placeholder=""
+                       required>
+              </mat-form-field><br>
+              <mat-form-field appearance="fill">
+                <mat-label>Segundo Apellido</mat-label>
+                <input matInput formControlName="secondlastname" placeholder=""
+                       required>
+              </mat-form-field><br>
+              <mat-form-field appearance="fill">
+                <mat-label>Tipo de Documento</mat-label>
+                <mat-select formControlName="type_document">
+                  <mat-option *ngFor="let typedocs of typedoc" [value]="typedocs.value">
+                    {{typedocs.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field><br>
+              <mat-form-field appearance="fill">
+                <mat-label>Numero de Documento</mat-label>
+                <input matInput formControlName="document" placeholder=""
+                       required>
+              </mat-form-field><br>
+              <mat-form-field appearance="fill">
+                <mat-label>Fecha de Nacimiento</mat-label>
+                <input formControlName="datebirth" matInput [matDatepicker]="picker">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field><br>
+              <mat-form-field appearance="fill">
+                <mat-label>Genero</mat-label>
+                <mat-select formControlName="genero">
+                  <mat-option *ngFor="let generos of genero" [value]="generos.value">
+                    {{generos.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field><br>
+              <mat-form-field appearance="fill">
+                <mat-label>Correo Electronico</mat-label>
+                <input matInput formControlName="email" placeholder=""
+                       required>
+              </mat-form-field><br>
+          </form>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </mat-step>
+        <mat-step [stepControl]="thirdFormGroup" [editable]="isEditable">
+            <form [formGroup]="thirdFormGroup" (ngSubmit)="form3()" #formthree="ngForm">
+              <ng-template matStepLabel>Datos Basicos</ng-template>
+              <mat-form-field appearance="fill">
+                <mat-label>Primer Nombre</mat-label>
+                <input matInput formControlName="firstname" placeholder=""
+                       required>
+              </mat-form-field><br>
+              <mat-form-field appearance="fill">
+                  <mat-label>Sengundo Nombre</mat-label>
+                  <input matInput formControlName="secondname" placeholder=""
+                         required>
+                </mat-form-field><br>
+              <mat-form-field appearance="fill">
+                  <mat-label>Primer Apellido</mat-label>
+                  <input matInput formControlName="firstlastname" placeholder=""
+                         required>
+                </mat-form-field><br>
+                <mat-form-field appearance="fill">
+                  <mat-label>Segundo Apellido</mat-label>
+                  <input matInput formControlName="secondlastname" placeholder=""
+                         required>
+                </mat-form-field><br>
+                <mat-form-field appearance="fill">
+                  <mat-label>Tipo de Documento</mat-label>
+                  <mat-select formControlName="type_document">
+                    <mat-option *ngFor="let typedocs of typedoc" [value]="typedocs.value">
+                      {{typedocs.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field><br>
+                <mat-form-field appearance="fill">
+                  <mat-label>Numero de Documento</mat-label>
+                  <input matInput formControlName="document" placeholder="" required >
+                </mat-form-field><br>
+                <mat-form-field appearance="fill">
+                  <mat-label>Fecha de Nacimiento</mat-label>
+                  <input formControlName="datebirth2" matInput [matDatepicker]="picker2" required>
+                  <mat-hint>MM/DD/YYYY</mat-hint>
+                  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                  <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field><br>
+                <mat-form-field appearance="fill">
+                  <mat-label>Genero</mat-label>
+                  <mat-select formControlName="genero">
+                    <mat-option *ngFor="let generos of genero" [value]="generos.value">
+                      {{generos.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field><br>
+                <mat-form-field appearance="fill">
+                  <mat-label>Correo Electronico</mat-label>
+                  <input matInput formControlName="email" placeholder="" required>
+                </mat-form-field><br>
+            </form>
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button type="button" (click)="formone.ngSubmit.emit();formtwo.ngSubmit.emit();formthree.ngSubmit.emit()">
+                    submit
+                    </button>
+              </div>
+          </mat-step>
+      </mat-stepper>
+  </div>
+  

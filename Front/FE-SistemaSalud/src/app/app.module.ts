@@ -13,6 +13,13 @@ import { MenuComponent } from './components/menu/menu.component';
 import { IsAuthenticatedGuard } from './is-authenticated.guard';
 import {MatMenuModule} from '@angular/material/menu';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -34,7 +41,12 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     MatMenuModule,
-    NgbModule
+    NgbModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDatepickerModule, MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
