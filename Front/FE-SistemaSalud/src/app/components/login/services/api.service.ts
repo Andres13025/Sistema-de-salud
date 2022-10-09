@@ -31,7 +31,13 @@ export class ApiService {
   }
 
   handlerError(error: HttpErrorResponse){
-    window.alert("error");
-    return throwError("error jaja");
+    if(error.error == 'Invalid credentials'){
+      window.alert("Credenciales Invalidas");
+      return throwError(error);
+    }else{
+      window.alert("Error Desconocido");
+      return throwError(error);
+    }
+    
   }
 }

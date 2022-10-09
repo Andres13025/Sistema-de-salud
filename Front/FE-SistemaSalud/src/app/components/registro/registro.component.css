@@ -1,6 +1,7 @@
-.mat-stepper-horizontal {
-    margin-top: 8px;
-  }
+::ng-deep .mat-horizontal-stepper-header-container {
+  width: 50%;
+  margin: 0 auto;
+}
   
   .mat-form-field {
     margin-top: 16px;

@@ -19,13 +19,13 @@ namespace WebApplication1.Models
         {
             modelBuilder.Entity<Login>(entity =>
             {
-                entity.HasNoKey();
                 entity.ToTable("LOGIN");
                 entity.Property(e => e.Id_Login).HasColumnName("Id_Login");
                 entity.Property(e => e.Usuario).HasMaxLength(50).IsUnicode(false);
-                entity.Property(e => e.Contraseña).HasMaxLength(100).IsUnicode(false);
+                entity.Property(e => e.Contraseña).HasMaxLength(50).IsUnicode(false);
                 entity.Property(e => e.Ultimo_logueo).IsUnicode(false);
                 entity.Property(e => e.Activo).IsUnicode(false);
+                entity.Property(e => e.Id_Persona).IsUnicode(false);
             });
 
             modelBuilder.Entity<Persona>(entity =>

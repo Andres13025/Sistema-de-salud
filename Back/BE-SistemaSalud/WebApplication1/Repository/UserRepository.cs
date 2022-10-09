@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using WebApplication1.DTO;
 using WebApplication1.Interfaces;
 using WebApplication1.Models;
@@ -19,9 +20,9 @@ namespace WebApplication1.Repository
             {
                 return _dbContext.Persona.ToList();
             }
-            catch
+            catch(Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
 
@@ -29,10 +30,12 @@ namespace WebApplication1.Repository
         {
             try
             {
-                UserLogin userinfo = new UserLogin
+                Login userinfo = new Login
                 {
-                    Username = value.FirstformGroup.Username,
-                    Password = value.FirstformGroup.Password
+                    Usuario = value.FirstformGroup.Username,
+                    Contraseña = value.FirstformGroup.Password,
+                    Activo = true,
+                    Ultimo_logueo = DateTime.Now
                 };
                 Persona infoperson = new Persona
                 {
@@ -47,15 +50,32 @@ namespace WebApplication1.Repository
                     Correo = value.SecondformGroup.Correo,
                     Parentesco = value.SecondformGroup.Parentesco
                 };
-
-                var x = _dbContext.Persona.Add(infoperson);
-                await _dbContext.SaveChangesAsync();
+                
+                var state = _dbContext.Persona.Add(infoperson);
+                var resultrequest = await _dbContext.SaveChangesAsync();
+                var iduser = state.Entity.Id_Persona;
+                var resultaddlogin = await addlogin(iduser, userinfo);
 
                 return true;
             }
-            catch
+            catch(Exception ex)
             {
-                throw;
+                return false;
+            }
+        }
+
+        private async Task<bool> addlogin(int iduser, Login userinfo)
+        {
+            try
+            {
+                userinfo.Id_Persona = iduser;
+                var state = _dbContext.Usuario.Add(userinfo);
+                var resultrequest = await _dbContext.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
             }
         }
     }

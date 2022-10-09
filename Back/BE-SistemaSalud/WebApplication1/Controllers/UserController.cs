@@ -26,11 +26,6 @@ namespace WebApplication1.Controllers
             return Ok(result);
         }
 
-        [HttpPost("logininfo")]
-        public void Logininfo([FromBody] string value)
-        {
-        }
-
         [HttpGet("GetAll")]
         public async Task<IActionResult> GetAll()
         {
