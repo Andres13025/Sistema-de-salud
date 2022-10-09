@@ -35,9 +35,9 @@ namespace WebApplication1.Controllers
                         new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                         new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-                        new Claim("Id_usuario", user.Id_Usuario.ToString()),
-                        new Claim("Nombre", user.Nombre),
-                        new Claim("Correo", user.Correo),
+                        new Claim("Id_Login", user.Id_Login.ToString()),
+                        new Claim("Usuario", user.Usuario),
+                        new Claim("Ultimo_logueo", user.Ultimo_logueo.ToString()),
                         new Claim("Activo", user.Activo.ToString())
                     };
 
@@ -64,9 +64,9 @@ namespace WebApplication1.Controllers
             }
         }
 
-        private async Task<Usuario> GetUser(string email, string password)
+        private async Task<Login> GetUser(string user, string password)
         {
-            return await _context.Usuario.FirstOrDefaultAsync(u => u.Correo == email && u.Contraseña == password);
+            return await _context.Usuario.FirstOrDefaultAsync(u => u.Usuario == user && u.Contraseña == password);
         }
     }
 }
