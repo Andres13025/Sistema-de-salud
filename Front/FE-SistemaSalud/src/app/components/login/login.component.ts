@@ -44,7 +44,12 @@ export class LoginComponent implements OnInit {
         console.log("logged");
         this.router.navigate(['/menu']);
       });
+      
 
   }
 
+
+  modalmesagge(){
+    window.alert("Te Hemos enviado un correo");
+  }
 }
